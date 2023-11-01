@@ -2,6 +2,10 @@ const { connect } = require("./src/utils/db");
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const AlimentosRoutes = require("./src/api/routes/Alimentos.routes");
+const GastosRoutes = require("./src/api/routes/Gastos.routes");
+const HabitosRoutes = require("./src/api/routes/Habitos.routes");
+const { LibrosRouter } = require("./src/api/routes/Libros.routes");
 
 const app = express();
 const PORT = process.env.PORT;
@@ -19,6 +23,10 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: false }));
 
 //----------routes------------
+app.use("/api/v1/alimentos/", AlimentosRoutes);
+app.use("/api/v1/gastos/", GastosRoutes);
+app.use("/api/v1/habitos/", HabitosRoutes);
+app.use("/api/v1/libros/", LibrosRouter);
 
 app.use("*", (req, res, next) => {
   const error = new Error("Route not found");
