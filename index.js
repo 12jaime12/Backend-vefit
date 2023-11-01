@@ -6,6 +6,7 @@ const AlimentosRoutes = require("./src/api/routes/Alimentos.routes");
 const GastosRoutes = require("./src/api/routes/Gastos.routes");
 const HabitosRoutes = require("./src/api/routes/Habitos.routes");
 const { LibrosRouter } = require("./src/api/routes/Libros.routes");
+const ReflexionRouter = require("./src/api/routes/Reflexion.routes");
 
 const app = express();
 const PORT = process.env.PORT;
@@ -27,6 +28,7 @@ app.use("/api/v1/alimentos/", AlimentosRoutes);
 app.use("/api/v1/gastos/", GastosRoutes);
 app.use("/api/v1/habitos/", HabitosRoutes);
 app.use("/api/v1/libros/", LibrosRouter);
+app.use("/api/v1/reflexion/", ReflexionRouter);
 
 app.use("*", (req, res, next) => {
   const error = new Error("Route not found");
